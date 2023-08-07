@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professor Email Search</title>
+</head>
+<body>
+
+<h1>Professor Email Search</h1>
+
+<form id="searchForm">
+  <label for="professorName">Professor's Name:</label>
+  <input type="text" id="professorName" name="professorName" required><br><br>
+
+  <label for="emailDomain">College's Email Domain:</label>
+  <input type="text" id="emailDomain" name="emailDomain" required><br><br>
+
+  <button type="submit">Search Email</button>
+</form>
+
+<div id="searchResults"></div>
+
+<script>
+document.getElementById("searchForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const professorName = document.getElementById("professorName").value;
+  const emailDomain = document.getElementById("emailDomain").value;
+  const query = `${professorName} "${emailDomain}"`;
+  const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
+  // Open the search results in a new tab/window
+  window.open(searchUrl, "_blank");
+});
+</script>
+
+</body>
+</html>
